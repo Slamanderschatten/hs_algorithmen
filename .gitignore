@@ -1,3 +1,4 @@
+# cMake
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -10,3 +11,17 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 CMakeUserPresets.json
+
+
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea/workspace.xml
+# CLion specific files
+/cmake-build-debug/
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+/data/
