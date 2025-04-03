@@ -16,7 +16,11 @@ Aufgabe 3:
 a) Nein da keine größen ermittelt werden sollen
 
 b)
+Benötigtes maß vorher messen
+
 Widersprüche in den Temperaturangaben (20-22°C vs. 45°C) klären.
+
+Genaue druckangaben zum eintauchen fehlen
 
 Präzisere Zeitangaben für die Modellierung und Aushärtung hinzufügen.
 
