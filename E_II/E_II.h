@@ -19,6 +19,8 @@ namespace hs_a {
         static int tV_r(int n);
         static int tV_i(int n);
 
+        static int tVII(int a, int b);
+
     };
 
 } // hs_a

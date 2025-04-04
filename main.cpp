@@ -4,12 +4,13 @@
 #include "_MAIN.h"
 #include "E_I/Collatz.h"
 #include "E_II/E_II.h"
+#include "E_II/TowersOfHanoi.h"
 
 
 
 
 
-#define TASK 5
+#define TASK 7
 
 
 
@@ -87,6 +88,32 @@ int main() {
         cout << E_II::tV_i(4);
         cout << endl;
         cout << E_II::tV_i(5);
+        cout << endl << endl << endl;
+    }
+#endif
+
+#if TASK == 6 //number of moves for towers of hanoi
+    {
+        cout << TowersOfHanoi::neededMoves(1);
+        cout << endl;
+        cout << TowersOfHanoi::neededMoves(2);
+        cout << endl;
+        cout << TowersOfHanoi::neededMoves(3);
+        cout << endl;
+        cout << TowersOfHanoi::neededMoves(4);
+        cout << endl;
+        cout << TowersOfHanoi::neededMoves(5);
+        cout << endl << endl << endl;
+    }
+#endif
+
+#if TASK == 7 //greatest common divisor
+    {
+        cout << E_II::tVII(9,15);
+        cout << endl;
+        cout << E_II::tVII(16,28);
+        cout << endl;
+        cout << E_II::tVII(119,544);
         cout << endl << endl << endl;
     }
 #endif

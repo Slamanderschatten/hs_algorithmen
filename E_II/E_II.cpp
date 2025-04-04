@@ -53,6 +53,20 @@ namespace hs_a {
     }
 
 
+    int E_II::tVII(int a, int b) {
+        int r = -1;
+        while(r != 0) {
+            if(a < b)
+                swap(a, b);
+            r = a - b;
+            a = b;
+            b = r;
+        }
+        return a;
+
+    }
+
+
 
 
 
