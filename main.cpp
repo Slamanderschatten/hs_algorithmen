@@ -5,12 +5,13 @@
 #include "E_I/Collatz.h"
 #include "E_II/E_II.h"
 #include "E_II/TowersOfHanoi.h"
+#include "E_III/E_III.h"
 
 
 
 
 
-#define TASK 7
+#define TASK 9
 
 
 
@@ -114,6 +115,30 @@ int main() {
         cout << E_II::tVII(16,28);
         cout << endl;
         cout << E_II::tVII(119,544);
+        cout << endl << endl << endl;
+    }
+#endif
+
+#if TASK == 8 // Sum(1/n)...
+    {
+        cout << E_III::tVIII_r(1);
+        cout << endl;
+        cout << E_III::tVIII_r(3);
+        cout << endl;
+        cout << E_III::tVIII_r(5);
+        cout << endl << endl << endl;
+        cout << E_III::tVIII_i(1);
+        cout << endl;
+        cout << E_III::tVIII_i(3);
+        cout << endl;
+        cout << E_III::tVIII_i(5);
+        cout << endl << endl << endl;
+    }
+#endif
+
+#if TASK == 9 // PI
+    {
+        cout << E_III::piRecursive(20);
         cout << endl << endl << endl;
     }
 #endif
