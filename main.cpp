@@ -98,15 +98,15 @@ int main() {
         TowersOfHanoi::move_r(4, 1, 3, 2);
         cout << endl << endl;
 
-        cout << TowersOfHanoi::neededMoves(1);
+        cout << 1 << " => " << TowersOfHanoi::neededMoves(1);
         cout << endl;
-        cout << TowersOfHanoi::neededMoves(2);
+        cout << 2 << " => " << TowersOfHanoi::neededMoves(2);
         cout << endl;
-        cout << TowersOfHanoi::neededMoves(3);
+        cout << 3 << " => " << TowersOfHanoi::neededMoves(3);
         cout << endl;
-        cout << TowersOfHanoi::neededMoves(4);
+        cout << 4 << " => " << TowersOfHanoi::neededMoves(4);
         cout << endl;
-        cout << TowersOfHanoi::neededMoves(5);
+        cout << 5 << " => " << TowersOfHanoi::neededMoves(5);
         cout << endl << endl << endl;
     }
 #endif
