@@ -5,6 +5,7 @@
 #pragma once
 
 #include "../_MAIN.h"
+#include <cmath>
 
 namespace hs_a {
 
@@ -14,6 +15,7 @@ namespace hs_a {
 
     public:
         static int neededMoves(int numberOfRings);
+        static void move_r(int n, int from, int to, int clipboard);
 
 
 

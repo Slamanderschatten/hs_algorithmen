@@ -34,6 +34,16 @@ namespace hs_a {
     }
 
 
+    void TowersOfHanoi::move_r(int n, int from, int to, int clipboard) {
+        if(n != 1) move_r(n-1, from, clipboard, to);
+        cout << from << " to " << to << endl;
+        if(n != 1) move_r(n-1, clipboard, to, from);
+    }
+
+
+
+
+
 
 
 

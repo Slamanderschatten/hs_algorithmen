@@ -11,7 +11,7 @@
 
 
 
-#define TASK 9
+#define TASK 6
 
 
 
@@ -95,6 +95,9 @@ int main() {
 
 #if TASK == 6 //number of moves for towers of hanoi
     {
+        TowersOfHanoi::move_r(4, 1, 3, 2);
+        cout << endl << endl;
+
         cout << TowersOfHanoi::neededMoves(1);
         cout << endl;
         cout << TowersOfHanoi::neededMoves(2);
