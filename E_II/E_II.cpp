@@ -28,6 +28,8 @@ namespace hs_a {
         }
         return result;
     }
+
+
     int E_II::tV_r(int n) {
         if(n <= 2)
             return 1;
