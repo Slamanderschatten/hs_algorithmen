@@ -144,7 +144,7 @@ int main() {
 
 #if TASK == 9 // PI
     {
-        cout << E_III::piRecursive(20);
+        cout << 2 * E_III::piRecursive(200);
         cout << endl << endl << endl;
     }
 #endif

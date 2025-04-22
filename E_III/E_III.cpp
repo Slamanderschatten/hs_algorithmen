@@ -41,14 +41,11 @@ namespace hs_a {
 
 
     double E_III::piRecursive(const unsigned int n, const unsigned int i) {
-        double res = 2.0;
-        if(i != 0)
-            res = 1 + (i / (i * 2.0 + 1.0));
 
         if(i == n)
-            return res;
+            return 1;
         else
-            return res * piRecursive(n, i + 1);
+            return 1 + (i / (i * 2.0 + 1.0)) * piRecursive(n, i+1);
     }
 
 

@@ -14,7 +14,7 @@ namespace hs_a {
 
         static double tVIII_r(unsigned int n);
         static double tVIII_i(unsigned int n);
-        static double piRecursive(unsigned int n, unsigned int i = 0);
+        static double piRecursive(unsigned int n, unsigned int i = 1);
 
 
     };
