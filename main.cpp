@@ -6,12 +6,15 @@
 #include "E_II/E_II.h"
 #include "E_II/TowersOfHanoi.h"
 #include "E_III/E_III.h"
+#include "E_IV/E_IV.h"
+#include "E_IV/Vector.h"
 
 
 
 
 
-#define TASK 6
+#define TASK 13
+#define SUBTASK 2
 
 
 
@@ -145,6 +148,88 @@ int main() {
         cout << endl << endl << endl;
     }
 #endif
+
+#if TASK == 13 // fibonacci
+    {
+#if SUBTASK == 1
+        E_IV::fib_i();
+        /*
+         * 1 sec = 50 000
+         * 10 sec = 600 000
+         * 1 min = 4 000 000
+         * Zeitkomplexität = n
+         * Speicherkomplexität = 1
+         */
+#endif
+#if SUBTASK == 2
+        E_IV::fib_r(0,1,1);
+        /*
+         * 1 sec = 50 000
+         * 10 sec = 40 000 -> Segmentation fault
+         * 1 min = 40 000 -> Segmentation fault
+         * Zeitkomplexität = n
+         * Speicherkomplexität = n
+         */
+#endif
+#if SUBTASK == 3
+        /*
+         * 1 sec =
+         * 10 sec =
+         * 1 min = 4 000 000
+         * Zeitkomplexität = n
+         * Speicherkomplexität = 1
+         */
+        E_IV::fib_iII();
+#endif
+    }
+#endif
+
+#if TASK == 14 // bin search
+    {
+        Vector v(100);
+        for(int i = 0; i < 100; i++) {
+            v.set(i, i);
+        }
+
+        cout << "search value 20: " << v.bin_search(20);
+    }
+    /*
+     * log2(2^k -1)
+     * log2(n)
+     */
+#endif
+
+#if TASK == 15 //
+    {
+        cout << E_IV::task15_r(1) << " ";
+        cout << E_IV::task15_r(2) << " ";
+        cout << E_IV::task15_r(3) << " ";
+        cout << E_IV::task15_r(4) << " ";
+        cout << E_IV::task15_r(5) << " ";
+        cout << E_IV::task15_r(6) << " ";
+        cout << E_IV::task15_r(7) << " ";
+        cout << E_IV::task15_r(8) << " ";
+        cout << E_IV::task15_r(9) << " ";
+        cout << E_IV::task15_r(10) << endl;
+        cout << E_IV::task15_i(1) << " ";
+        cout << E_IV::task15_i(2) << " ";
+        cout << E_IV::task15_i(3) << " ";
+        cout << E_IV::task15_i(4) << " ";
+        cout << E_IV::task15_i(5) << " ";
+        cout << E_IV::task15_i(6) << " ";
+        cout << E_IV::task15_i(7) << " ";
+        cout << E_IV::task15_i(8) << " ";
+        cout << E_IV::task15_i(9) << " ";
+        cout << E_IV::task15_i(10) << endl;
+    }
+    /*
+     * c) n^n
+     * d) n
+     * e) n
+     */
+#endif
+
+
 
 
 
