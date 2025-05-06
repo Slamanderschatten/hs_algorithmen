@@ -8,13 +8,14 @@
 #include "E_III/E_III.h"
 #include "E_IV/E_IV.h"
 #include "E_IV/Vector.h"
+#include "E_V/E_V.h"
 
 
 
 
 
-#define TASK 13
-#define SUBTASK 2
+#define TASK 19
+#define SUBTASK 1
 
 
 
@@ -226,6 +227,24 @@ int main() {
      * c) n^n
      * d) n
      * e) n
+     */
+#endif
+
+#if TASK == 19 // fakultaet
+    {
+        cout << E_V::task19(1) << " ";
+        cout << E_V::task19(2) << " ";
+        cout << E_V::task19(3) << " ";
+        cout << E_V::task19(4) << " ";
+        cout << E_V::task19(5) << " ";
+        cout << E_V::task19(6) << " ";
+        cout << E_V::task19(7) << " ";
+        cout << E_V::task19(8) << " ";
+        cout << E_V::task19(9) << " ";
+        cout << endl;
+    }
+    /*
+     *
      */
 #endif
 
