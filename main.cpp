@@ -9,12 +9,13 @@
 #include "E_IV/E_IV.h"
 #include "E_IV/Vector.h"
 #include "E_V/E_V.h"
+#include "E_VI/Stack.h"
 
 
 
 
 
-#define TASK 19
+#define TASK 21
 #define SUBTASK 1
 
 
@@ -26,6 +27,7 @@
 
 int main() {
     using namespace hs_a;
+    using namespace std;
 
 
 #if TASK == 1
@@ -243,9 +245,114 @@ int main() {
         cout << E_V::task19(9) << " ";
         cout << endl;
     }
-    /*
-     *
-     */
+#endif
+
+#if TASK == 20 // stack
+    {
+        Stack<int> stack;
+        int i1 = 1;
+        int i2 = 2;
+        stack.push(i1);
+        stack.push(i2);
+        cout << stack.top() << endl;
+        cout << stack.pop() << endl;
+        cout << stack.top() << endl;
+        cout << stack.size() << endl;
+        cout << stack.empty() << endl;
+        cout << stack.pop() << endl;
+        cout << stack.empty() << endl;
+        cout << endl;
+    }
+#endif
+
+#if TASK == 21 // INFIX => POSTFIX
+    {
+        unordered_map<char, uint8_t> calcSymbols;
+        calcSymbols.emplace('(', 0);
+        calcSymbols.emplace(')', 0);
+        calcSymbols.emplace('*', 1);
+        calcSymbols.emplace('/', 1);
+        calcSymbols.emplace('+', 2);
+        calcSymbols.emplace('-', 2);
+        Stack<char> sOperator;
+        char startOperator = '(';
+        sOperator.push(startOperator);
+        Stack<long long> sValues;
+        string calc;
+        cout << "set calculation" << endl;
+        //cin >> calc;
+        calc = "1+2*3-(4+5*1)*2";
+        calc.append(")");
+
+        long long lastPos = -1;
+        for(size_t i = 0; i < calc.size(); i++) {
+            char sym  = calc[i];
+            auto priorityIt = calcSymbols.find(sym);
+            if(priorityIt != calcSymbols.end()) {
+
+                //take value
+                if(i - lastPos > 1) {
+                    long long val = stoll(calc.substr(lastPos + 1, i - lastPos - 1));
+                    sValues.push(val);
+                }
+                lastPos = i;
+
+                if(sOperator.top() == '(') {
+                    sOperator.push(sym);
+                }
+                else if(sym == ')') {
+                    while(sOperator.top() != '(') {
+                        long long right = sValues.pop();
+                        long long left = sValues.pop();
+                        long long result;
+                        switch (sOperator.pop()) {
+                            case '+':
+                                result = left + right;
+                                break;
+                            case '-':
+                                result = left - right;
+                                break;
+                            case '*':
+                                result = left * right;
+                                break;
+                            case '/':
+                                result = left / right;
+                                break;
+                        }
+                        sValues.push(result);
+                    }
+                    sOperator.pop();
+                }
+                else if(priorityIt->second < calcSymbols[sOperator.top()]) {
+                    sOperator.push(sym);
+                }
+                else {
+                    long long right = sValues.pop();
+                    long long left = sValues.pop();
+                    long long result = 0;
+                    switch(sOperator.pop()) {
+                        case '+': result = left + right; break;
+                        case '-': result = left - right; break;
+                        case '*': result = left * right; break;
+                        case '/': result = left / right; break;
+                    }
+                    sValues.push(result);
+                    if(priorityIt->second >= calcSymbols[sOperator.top()]) {
+                        right = sValues.pop();
+                        left = sValues.pop();
+                        switch(sOperator.pop()) {
+                            case '+': result = left + right; break;
+                            case '-': result = left - right; break;
+                            case '*': result = left * right; break;
+                            case '/': result = left / right; break;
+                        }
+                        sValues.push(result);
+                    }
+                    sOperator.push(sym);
+                }
+            }
+        }
+    }
 #endif
 
 

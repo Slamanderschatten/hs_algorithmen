@@ -1,0 +1,28 @@
+Aufgabe 20:
+
+b)
+
+tail
+ \/
+|||| -> |||| -> |||| -> |||| -> 0
+
+
+PUSH
+tail
+ \/
+|||| -> |||| -> |||| -> |||| -> {|||| -> 0}
+                                    new
+
+POP
+tail
+ \/
+|||| -> |||| -> |||| -> |||| -> 0 {|||| -> 0}
+                                    deleted
+
+Bei einer lehren liste wird bei pop eine exception geworfen
+
+
+
+Aufgabe 21:
+
+
