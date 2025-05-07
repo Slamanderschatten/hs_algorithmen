@@ -13,55 +13,40 @@ namespace hs_a {
     class Stack {
         struct node
         {
-            explicit node(item_type e) : item(e) {}
-            ~node() {
-                delete next;
-            }
+            explicit node(item_type e, node* next) : item(e), next(next) {}
             item_type item;
             node *next = nullptr;
         };
     private:
-        node *first = nullptr;
-        node *last = nullptr;
+        node *tail = nullptr;
         size_t elemNumber = 0;
     public:
         Stack() = default;
         ~Stack() {
-            delete first;
+            clear();
         }
         void push(item_type &r) {
-            if(!last) {
-                first = new node(r);
-                last = first;
-            } else {
-                last = last->next = new node(r);
-            }
+            node* next = nullptr;
+            if(tail)
+                next = tail;
+            tail = new node(r, next);
             elemNumber++;
         }
         item_type pop() {
-            if(!first)
+            if(!tail)
                 throw std::out_of_range("stack is empty");
 
-            item_type elem = last->item;
-            if(first == last) {
-                delete first;
-                first = nullptr;
-                last = nullptr;
-            } else {
-                node *beforeLast = first;
-                while (beforeLast->next != last) {
-                    beforeLast = beforeLast->next;
-                }
-                delete beforeLast->next;
-                beforeLast->next = nullptr;
-                last = beforeLast;
-            }
+            item_type elem = tail->item;
+            node* newTail = tail->next;
+            delete tail;
+            tail = newTail;
+
             elemNumber--;
             return elem;
         }
         item_type top() {
-            if(last)
-                return last->item;
+            if(tail)
+                return tail->item;
             else throw std::out_of_range("stack is empty");
         }
         size_t size() {
@@ -71,10 +56,12 @@ namespace hs_a {
             return elemNumber == 0;
         }
         void clear() {
-            delete first;
-            first = nullptr;
-            last = nullptr;
-            elemNumber = 0;
+            node* next = tail;
+            while(next) {
+                node* actualTail = next;
+                next = next->next;
+                delete actualTail;
+            }
         }
 
 

@@ -10,6 +10,8 @@
 #include "E_IV/Vector.h"
 #include "E_V/E_V.h"
 #include "E_VI/Stack.h"
+#include "E_VI/Calculator.h"
+#include "E_VI/Calculator.cpp"
 
 
 
@@ -267,6 +269,7 @@ int main() {
 
 #if TASK == 21 // INFIX => POSTFIX
     {
+#if SUBTASK == 2
         unordered_map<char, uint8_t> calcSymbols;
         calcSymbols.emplace('(', 0);
         calcSymbols.emplace(')', 0);
@@ -352,6 +355,20 @@ int main() {
                 }
             }
         }
+#endif
+
+#if SUBTASK == 1
+        Calculator<long long int> calculator;
+
+        string calc;
+        cout << "set calculation" << endl;
+        //cin >> calc;
+        //calc = "1+2*3-(4+5*1)*2";
+        calc = "1+2+5*3+12-(4+5*4/2)*2+4*(6*3+1)";
+        cout << calculator.calc(calc) << endl;
+#endif
+
+
     }
 #endif
 

@@ -14,7 +14,10 @@ namespace hs_a {
     /****************************************************/
 
 
-    long long Calculator::calcTopOfStacks() {
+    template<typename valType>
+    void Calculator<valType>::calcTopOfStacks() {
+        if(sValues.size() < 2)
+            return;
         long long right = sValues.pop();
         long long left = sValues.pop();
         long long result;
@@ -45,54 +48,51 @@ namespace hs_a {
     /****************************************************/
 
 
-    Calculator::Calculator() {
-        calcSymbols.emplace('(', 0);
+    template<typename valType>
+    Calculator<valType>::Calculator() {
         calcSymbols.emplace(')', 0);
-        calcSymbols.emplace('*', 1);
-        calcSymbols.emplace('/', 1);
-        calcSymbols.emplace('+', 2);
-        calcSymbols.emplace('-', 2);
+        calcSymbols.emplace('+', 5);
+        calcSymbols.emplace('-', 5);
+        calcSymbols.emplace('*', 10);
+        calcSymbols.emplace('/', 10);
+        calcSymbols.emplace('(', 15);
     }
 
 
-    long long Calculator::calc(string calc) {
+    template<typename valType>
+    valType Calculator<valType>::calc(string calc) {
         sValues.clear();
         sOperator.clear();
         char startOperator = '(';
         sOperator.push(startOperator);
         calc.append(")");
 
-        long long lastPos = -1;
-        for(size_t i = 0; i < calc.size(); i++) {
+        intmax_t lastPos = -1;
+        for(intmax_t i = 0; i < calc.size(); i++) {
             char sym  = calc[i];
             auto priorityIt = calcSymbols.find(sym);
             if(priorityIt != calcSymbols.end()) {
 
                 //take value
                 if(i - lastPos > 1) {
-                    long long val = stoll(calc.substr(lastPos + 1, i - lastPos - 1));
+                    valType val = stoll(calc.substr(lastPos + 1, i - lastPos - 1));
                     sValues.push(val);
                 }
                 lastPos = i;
 
-                if(sOperator.top() == '(') {
-                    sOperator.push(sym);
-                }
-                else if(sym == ')') {
+                //push operator or calculate
+                if(sym == ')') {
                     while(sOperator.top() != '(') {
                         calcTopOfStacks();
                     }
                     sOperator.pop();
                 }
-                else if(priorityIt->second < calcSymbols[sOperator.top()]) {
+                else if(priorityIt->second > calcSymbols[sOperator.top()] || sOperator.top() == '(') {
                     sOperator.push(sym);
                 }
                 else {
                     calcTopOfStacks();
-                    if(priorityIt->second >= calcSymbols[sOperator.top()]) {
-                        calcTopOfStacks();
-                    }
-                    sOperator.push(sym);
+                    i--; //prove the actual operator again
                 }
             }
         }

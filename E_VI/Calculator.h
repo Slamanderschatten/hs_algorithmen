@@ -9,6 +9,7 @@
 
 namespace hs_a {
 
+    template<typename valType>
     class Calculator {
     private:
         unordered_map<char, uint8_t> calcSymbols;
@@ -16,12 +17,12 @@ namespace hs_a {
         Stack<char> sOperator;
 
 
-        long long calcTopOfStacks();
+        void calcTopOfStacks();
 
     public:
 
         Calculator();
-        long long calc(string s);
+        valType calc(string s);
 
 
     };
